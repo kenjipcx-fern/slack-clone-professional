@@ -1,0 +1,323 @@
+@import 'tailwindcss';
+
+/* ============================================================================ */
+/* Slack Competitor Design System - Color Variables */
+/* ============================================================================ */
+
+:root {
+  /* Base Colors - Light Theme */
+  --background: #ffffff;
+  --foreground: #1d1c1d;
+  --muted: #f8f9fa;
+  --muted-foreground: #616061;
+  --popover: #ffffff;
+  --popover-foreground: #1d1c1d;
+  --card: #ffffff;
+  --card-foreground: #1d1c1d;
+
+  /* Primary Brand Colors (Slack-inspired) */
+  --primary: #611f69; /* Slack Purple */
+  --primary-foreground: #ffffff;
+  --secondary: #e8f5e8;
+  --secondary-foreground: #1d1c1d;
+
+  /* Sidebar Colors (Slack-inspired) */
+  --sidebar: #3f0e40;
+  --sidebar-foreground: #ffffff;
+  --sidebar-accent: #611f69;
+  --sidebar-accent-foreground: #ffffff;
+
+  /* Workspace Switcher */
+  --workspace-background: #3f0e40;
+  --workspace-hover: #4a154b;
+  --workspace-foreground: #ffffff;
+
+  /* Channel Colors */
+  --channel-hover: rgba(255, 255, 255, 0.1);
+  --channel-active: #1264a3;
+  --channel-text: #d1d2d3;
+
+  /* Message Colors */
+  --message-hover: #f8f9fa;
+  --message-border: #e5e7eb;
+
+  /* Status Colors */
+  --success: #2eb67d;
+  --success-foreground: #ffffff;
+  --warning: #ecb22e;
+  --warning-foreground: #1d1c1d;
+  --destructive: #e01e5a;
+  --destructive-foreground: #ffffff;
+
+  /* Border and Input Colors */
+  --border: #e5e7eb;
+  --input: #f8f9fa;
+  --ring: #611f69;
+
+  /* Accent Colors */
+  --accent: #f8f9fa;
+  --accent-foreground: #1d1c1d;
+
+  /* Online Indicator */
+  --online: #2eb67d;
+  --away: #ecb22e;
+  --busy: #e01e5a;
+  --offline: #8e8e8e;
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Base Colors - Dark Theme */
+    --background: #1a1d29;
+    --foreground: #ffffff;
+    --muted: #2c2d33;
+    --muted-foreground: #9ca3af;
+    --popover: #1a1d29;
+    --popover-foreground: #ffffff;
+    --card: #222429;
+    --card-foreground: #ffffff;
+
+    /* Primary Brand Colors - Dark */
+    --primary: #1264a3;
+    --primary-foreground: #ffffff;
+    --secondary: #2c2d33;
+    --secondary-foreground: #ffffff;
+
+    /* Sidebar Colors - Dark (Discord-inspired) */
+    --sidebar: #2f3136;
+    --sidebar-foreground: #dcddde;
+    --sidebar-accent: #5865f2;
+    --sidebar-accent-foreground: #ffffff;
+
+    /* Workspace Switcher - Dark */
+    --workspace-background: #202225;
+    --workspace-hover: #36393f;
+    --workspace-foreground: #dcddde;
+
+    /* Channel Colors - Dark */
+    --channel-hover: rgba(79, 84, 92, 0.32);
+    --channel-active: #42464d;
+    --channel-text: #8e9297;
+
+    /* Message Colors - Dark */
+    --message-hover: #2a2d31;
+    --message-border: #40444b;
+
+    /* Border and Input Colors - Dark */
+    --border: #40444b;
+    --input: #40444b;
+    --ring: #1264a3;
+
+    /* Accent Colors - Dark */
+    --accent: #40444b;
+    --accent-foreground: #ffffff;
+  }
+}
+
+/* ============================================================================ */
+/* Tailwind Theme Configuration */
+/* ============================================================================ */
+
+@theme inline {
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+
+  --color-workspace-background: var(--workspace-background);
+  --color-workspace-hover: var(--workspace-hover);
+  --color-workspace-foreground: var(--workspace-foreground);
+
+  --color-channel-hover: var(--channel-hover);
+  --color-channel-active: var(--channel-active);
+  --color-channel-text: var(--channel-text);
+
+  --color-message-hover: var(--message-hover);
+  --color-message-border: var(--message-border);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-online: var(--online);
+  --color-away: var(--away);
+  --color-busy: var(--busy);
+  --color-offline: var(--offline);
+
+  /* Typography */
+  --font-sans:
+    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  --font-mono:
+    ui-monospace, SFMono-Regular, 'Roboto Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  /* Spacing for 8px grid system */
+  --spacing-px: 1px;
+  --spacing-0: 0px;
+  --spacing-0-5: 2px;
+  --spacing-1: 4px;
+  --spacing-1-5: 6px;
+  --spacing-2: 8px;
+  --spacing-2-5: 10px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 28px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+  --spacing-24: 96px;
+  --spacing-32: 128px;
+
+  /* Border Radius */
+  --radius-sm: 2px;
+  --radius: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* ============================================================================ */
+/* Base Styles */
+/* ============================================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  font-variation-settings: normal;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ============================================================================ */
+/* Custom Scrollbar Styling */
+/* ============================================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* ============================================================================ */
+/* Focus Ring Utilities */
+/* ============================================================================ */
+
+.focus-ring {
+  @apply outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+}
+
+/* ============================================================================ */
+/* Animation Classes */
+/* ============================================================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.2s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

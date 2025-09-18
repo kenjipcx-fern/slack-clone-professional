@@ -1,0 +1,69 @@
+
+// API routes
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/workspaces', workspaceRoutes);
+app.use('/api/channels', channelRoutes);
+app.use('/api/messages', messageRoutes);
+app.use('/api/emojis', emojiRoutes);
+
+// 404 handler
+app.use((req, res, next) => {
+  res.status(404).json({
+    error: 'Route not found',
+    path: req.originalUrl,
+    method: req.method,
+  });
+});
+
+// Global error handler
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.error('Global error handler:', err);
+
+  // Log detailed error in development
+  if (process.env.NODE_ENV === 'development') {
+    console.error(err.stack);
+  }
+
+  res.status(err.status || 500).json({
+    error: {
+      message: err.message || 'Internal server error',
+      code: err.code || 'INTERNAL_ERROR',
+      ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
+    },
+  });
+});
+
+// ============================================================================
+// SERVER STARTUP
+// ============================================================================
+
+const server = app.listen(PORT, () => {
+  console.log(`
+🚀 Slack Competitor Backend Server Started!
+📍 Environment: ${process.env.NODE_ENV || 'development'}
+🌐 Server running on: http://localhost:${PORT}
+🔍 Health check: http://localhost:${PORT}/health
+📊 API base URL: http://localhost:${PORT}/api
+🎯 Database: Connected to PostgreSQL
+  `);
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('🛑 SIGTERM received, shutting down gracefully...');
+  server.close(() => {
+    console.log('✅ Process terminated');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', () => {
+  console.log('🛑 SIGINT received, shutting down gracefully...');
+  server.close(() => {
+    console.log('✅ Process terminated');
+    process.exit(0);
+  });
+});
+
+export default app;
